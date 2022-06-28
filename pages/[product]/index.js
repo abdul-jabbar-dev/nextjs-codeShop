@@ -1,24 +1,33 @@
-import Head from 'next/head';
 import React from 'react';
-const Tshirts = ({ res }) => {
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 
-    console.log(res);
+const Products = ({ res }) => {
+    const { query } = useRouter()
+    const router = useRouter()
+    const dynamicCategory = []
+    for (let i = 0; i < res.length; i++) {
+        const element = res[i];
+        if (element.category === query.product) {
+            dynamicCategory.push(element)
+        }
+    }
     return (
         <div>
             <Head>
-                <title>Tshirts</title>
+                <title>{query.product}</title>
             </Head>
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-wrap -m-4">
                         {
-                            res.map(p => <div key={p.id} className="lg:w-1/4 md:w-1/2 p-4 w-full mb-0 md:mb-8">
+                            dynamicCategory.map(p => <div key={p.uid} className="lg:w-1/4 md:w-1/2 p-4 hover:shadow w-full mb-0 md:mb-8">
                                 <a className="block relative h-48 rounded overflow-hidden">
                                     <img alt="ecommerce" className="object-contain object-top w-full h-full block" src={p.image} />
                                 </a>
                                 <div className="mt-4">
                                     <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{p.saller}</h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-medium">{p.title.slice(0, 70)}...</h2>
+                                    <h2 className="text-gray-500 hover:text-blue-900 cursor-pointer " onClick={(e) => router.push(`/${p.category}/${p.uid}`)} >{p.title.slice(0, 70)}...</h2>
                                     <p className="mt-1">${p.price}</p>
                                 </div>
                             </div>)
@@ -30,7 +39,7 @@ const Tshirts = ({ res }) => {
     );
 };
 
-export default Tshirts;
+export default Products;
 
 
 export async function getServerSideProps(context) {

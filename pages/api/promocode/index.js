@@ -15,5 +15,6 @@ export default function handler(req, res) {
         { code: '78DFEE', discount: '8%', expireDate: '01-jul-2022' },
         { code: 'SSRRE0', discount: '6%', expireDate: '03-jul-2022' },
         { code: 'DF4455', discount: '5%', expireDate: '05-jul-2022' },
+        { code: 'DF4445', discount: '5%', expireDate: '05-jan-2022' },
     ])
 }

@@ -1,0 +1,51 @@
+[
+    {
+        "title": "Computer Science Programmer Coding Student Gift T-Shirt",
+        "price": 150,
+        "description": "You've now found the staple t-shirt of your wardrobe. It's made of 100% ring-spun cotton and is soft and comfy. The double stitching on the neckline and sleeves add more durability to what is sure to be a favorite! 100% ring-spun cotton Sport Grey is 90% ring-spun cotton, 10% polyester Dark Heather is 65% polyester, 35% cotton 4.5 oz/yd² (86 g/m²) Pre-shrunk Shoulder-to-shoulder taping Quarter-turned to avoid crease down the center Blank product sourced from Bangladesh, Honduras, Haiti, Mexico, or Nicaragua",
+        "category": "tech",
+        "size": [
+            "sm",
+            "md",
+            "lg"
+        ],
+        "color": [
+            "red",
+            "gray"
+        ],
+        "roduct_details": {
+            "item-weight": "7.4 Ounces",
+            "Manufacturer ": "Generic"
+        },
+        "stocks": 15,
+        "uid": 156544,
+        "rating": 5,
+        "saller": " The Town Butler",
+        "image": "https://m.media-amazon.com/images/I/81g+6-H6eFL._AC_UL320_.jpg"
+    },
+    {
+        "title": "Computer Programmer Shirt, Funny Geek Gifts T Shirt - Computer Programmer Geek Gifts (Made in USA) Navy",
+        "price": 150,
+        "description": "You've now found the staple t-shirt of your wardrobe. It's made of 100% ring-spun cotton and is soft and comfy. The double stitching on the neckline and sleeves add more durability to what is sure to be a favorite! 100% ring-spun cotton Sport Grey is 90% ring-spun cotton, 10% polyester Dark Heather is 65% polyester, 35% cotton 4.5 oz/yd² (44 g/m²) Pre-shrunk Shoulder-to-shoulder taping Quarter-turned to avoid crease down the center Blank product sourced from Bangladesh, Honduras, Haiti, Mexico, or Nicaragua",
+        "category": "tech",
+        "size": [
+            "sm",
+            "lg",
+            "xl"
+        ],
+        "color": [
+            "red",
+            "gray",
+            "white"
+        ],
+        "roduct_details": {
+            "item_weight": "5 Ounces",
+            "Manufacturer ": "Generic"
+        },
+        "stocks": 48,
+        "uid": 156577,
+        "rating": 4.5,
+        "saller": " The Town Butler",
+        "image": "https://m.media-amazon.com/images/I/51QGchY0LNL._AC_UX385_.jpg"
+    }
+]

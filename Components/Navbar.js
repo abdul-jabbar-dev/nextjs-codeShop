@@ -26,7 +26,7 @@ const Navbar = () => {
                     </a>
                     <nav className="  order-3 sm:order-1   md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
                         <Link href={'/'}><a className="mr-5 hover:text-gray-900"> HOME</a></Link>
-                        <Link href={'/tshirts'}><a className="mr-5 hover:text-gray-900"> T-SHIRT</a></Link>
+                        <Link href={'/t-shirt'}><a className="mr-5 hover:text-gray-900"> T-SHIRT</a></Link>
                         <Link href={'/hodees'}><a className="mr-5 hover:text-gray-900"> HODEES</a></Link>
                         <Link href={'/mugs'}><a className="mr-5 hover:text-gray-900"> MUGS</a></Link>
                         <Link href={'/books'}><a className="mr-5 hover:text-gray-900"> BOOKS</a></Link>
