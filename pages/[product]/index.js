@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-
+import Image from 'next/image'
 const Products = ({ res }) => {
     const { query } = useRouter()
     const router = useRouter()
@@ -22,8 +22,8 @@ const Products = ({ res }) => {
                     <div className="flex flex-wrap -m-4">
                         {
                             dynamicCategory.map(p => <div key={p.uid} className="lg:w-1/4 md:w-1/2 p-4 hover:shadow w-full mb-0 md:mb-8">
-                                <a className="block relative h-48 rounded overflow-hidden">
-                                    <img alt="ecommerce" className="object-contain object-top w-full h-full block" src={p.image} />
+                                <a className=" relative h-48 rounded flex justify-center overflow-hidden">
+                                    <Image alt="ecommerce" src={p.image} width="200" height="200" />
                                 </a>
                                 <div className="mt-4">
                                     <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{p.saller}</h3>

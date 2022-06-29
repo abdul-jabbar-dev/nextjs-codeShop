@@ -1,10 +1,21 @@
 import '../styles/globals.css'
 import Navbar from '../Components/Navbar'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Footer from '../Components/Footer'
 function MyApp({ Component, pageProps }) {
-
+  const [myDatabase, setMyDatabase] = useState([])
   const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const fechProducts = async () => {
+      const fech = await fetch(`http://localhost:3000/api/products`)
+      const products = await fech.json()
+      setMyDatabase(products)
+    }
+    fechProducts()
+  }, []);
+
+
 
   const addToCart = (id, quantity, color, size) => {
     let temp = cart;
@@ -33,7 +44,6 @@ function MyApp({ Component, pageProps }) {
 
       })
     }
-    console.log(temp)
   }
 
   const removeItem = (id) => {
@@ -62,8 +72,8 @@ function MyApp({ Component, pageProps }) {
 
 
   return <>
-    <Navbar ></Navbar>
-    <Component cart={cart} addToCart={addToCart} removeItem={removeItem} {...pageProps} />
+    <Navbar myDatabase={myDatabase}></Navbar>
+    <Component cart={cart} addToCart={addToCart} removeItem={removeItem} myDatabase={myDatabase} {...pageProps} />
     <Footer></Footer>
   </>
 }

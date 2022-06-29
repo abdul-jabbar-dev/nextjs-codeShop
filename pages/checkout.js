@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Checkout = () => {
+    const [promoCodes, setPromoCodes] = useState([])
     const [promoCodeValue, setPromoCodeValue] = useState('')
     const [promoCodeMssg, setPromoCodeMssg] = useState('')
     const promoCodeAlert = () => {
@@ -10,7 +11,6 @@ const Checkout = () => {
             return 'text-red-400 text-sm'
         }
     }
-    const [promoCodes, setPromoCodes] = useState([])
     const products = [{
         image: 'https://m.media-amazon.com/images/I/71Jq0eYkSSL._AC_UL320_.jpg',
         id: '15486554',

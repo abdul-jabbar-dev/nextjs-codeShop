@@ -30,13 +30,11 @@ const Promocode = () => {
                         provider: '',
                     })
                 }
-                console.log(response)
             })
                 .catch(err => console.log(err))
         } else {
 
         }
-        console.log(newPromo)
     }
 
     useEffect(() => {
