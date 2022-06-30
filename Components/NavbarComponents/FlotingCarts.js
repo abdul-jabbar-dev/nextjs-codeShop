@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
+import Image from 'next/image';
 
 const FlotingCarts = ({ toggoleCart, addToCart, cart, myDatabase }) => {
 
@@ -7,22 +8,22 @@ const FlotingCarts = ({ toggoleCart, addToCart, cart, myDatabase }) => {
     const [cartDatabase, setCartDatabase] = useState([])
 
 
-    useEffect(() => {
-        const getSpecificData = async (item) => {
-            const data = await fetch(`http://localhost:3000/api/products/${item.category}?uid=${item.uid}`)
-            const res = await data.json();
-            return await res
-        }
-        for (let i = 0; i < cart.length; i++) {
-            const element = cart[i];
-            getSpecificData(element).then((data) => {
-                if (data.uid === element.uid) {
-                    setCartDatabase([{ ...cartDatabase }, { ...data, ...element }])
-                }
-            });
-        }
+    // useEffect(() => {
+    //     const getSpecificData = async (item) => {
+    //         const data = await fetch(`http://localhost:3000/api/products/${item.category}?uid=${item.uid}`)
+    //         const res = await data.json();
+    //         return await res
+    //     }
+    //     for (let i = 0; i < cart.length; i++) {
+    //         const element = cart[i];
+    //         getSpecificData(element).then((data) => {
+    //             if (data.uid === element.uid) {
+    //                 setCartDatabase([{ ...cartDatabase }, { ...data, ...element }])
+    //             }
+    //         });
+    //     }
 
-    }, [cart])
+    // }, [cart])
 
 
 
@@ -54,7 +55,7 @@ const FlotingCarts = ({ toggoleCart, addToCart, cart, myDatabase }) => {
                                     {
                                         cart && cart.map((item, i) => <tr key={i} className="border-y-8 border-transparent">
                                             <td className='flex items-center'>
-                                                <img className='w-8 mr-1' src="https://m.media-amazon.com/images/I/61cZNKcDs9L._AC_UL320_.jpg" alt="" />
+                                                <Image width={100} height={80 }  className=' mr-1' src="https://m.media-amazon.com/images/I/61cZNKcDs9L._AC_UL320_.jpg" alt="" />
                                                 <div>
                                                     The 400 Blows
                                                     <p className='text-xs'>{item.color}</p>
