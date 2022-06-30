@@ -17,7 +17,7 @@
             "item-weight": "7.4 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 20,
         "uid": 233333,
         "rating": 5,
         "saller": " The Town Butler",
@@ -42,7 +42,7 @@
             "item_weight": "5 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 48,
+        "stocks": 12,
         "uid": 442342,
         "rating": 4.5,
         "saller": " The Town Butler",
@@ -68,7 +68,7 @@
             "item_weight": "4.5 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 1,
         "uid": 444111,
         "rating": 3.5,
         "saller": " Shamroz Garments (Pvt) Ltdr",

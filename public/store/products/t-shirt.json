@@ -17,7 +17,7 @@
             "item-weight": "7.4 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 5,
         "uid": 156544,
         "rating": 5,
         "saller": " The Town Butler",
@@ -42,7 +42,7 @@
             "item_weight": "5 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 48,
+        "stocks": 4,
         "uid": 156577,
         "rating": 4.5,
         "saller": " The Town Butler",
@@ -68,7 +68,7 @@
             "item_weight": "4.5 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 4,
         "uid": 156578,
         "rating": 3.5,
         "saller": " Shamroz Garments (Pvt) Ltdr",
@@ -95,7 +95,7 @@
             "item_weight": "4.5 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 0,
         "uid": 156984,
         "rating": 2,
         "saller": " Shamroz Garments (Pvt) Ltdr",
@@ -120,7 +120,7 @@
             "item_weight": "6 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 0,
         "uid": 156354,
         "rating": 3,
         "saller": " Shamroz Garments (Pvt) Ltdr",
@@ -147,7 +147,7 @@
             "item_weight": "6 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 6,
         "uid": 156154,
         "rating": 2.4,
         "saller": " RainBow Apparel",
@@ -179,7 +179,7 @@
             "item_weight": "6 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 8,
         "uid": 156458,
         "rating": 3.5,
         "saller": " RainBow Apparel",
@@ -206,7 +206,7 @@
             "item_weight": "6 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 0,
         "uid": 156456,
         "rating": 5,
         "saller": " Silverene Apparels Ltd",
@@ -234,7 +234,7 @@
             "item_weight": "6 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 5,
         "uid": 156123,
         "rating": 3.3,
         "saller": " Silverene Apparels Ltd",
@@ -260,7 +260,7 @@
             "item_weight": "5 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 3,
         "uid": 156489,
         "rating": 2.5,
         "saller": " The Town Butler",
@@ -287,7 +287,7 @@
             "item_weight": "6 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 1,
         "uid": 156589,
         "rating": 2.4,
         "saller": " RainBow Apparel",
@@ -319,7 +319,7 @@
             "item_weight": "6 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 0,
         "uid": 158548,
         "rating": 3.5,
         "saller": " RainBow Apparel",
@@ -403,7 +403,7 @@
             "item_weight": "6 Ounces",
             "Manufacturer ": "Generic"
         },
-        "stocks": 15,
+        "stocks": 0,
         "uid": 158533,
         "rating": 3.5,
         "saller": " RainBow Apparel",

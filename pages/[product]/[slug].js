@@ -1,12 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image'
+
 const Slug = (props) => {
     const [myProduct, setMyProduct] = useState([])
     const [colorSelected, setColorSelected] = useState('')
+    const [cartAddProduct, setCartAddProduct] = useState({})
+    const [update, setUpdate] = useState()
+    const qtyRef = useRef()
+    const sizeRef = useRef()
+
+    const setCart = (e) => {
+        e?.preventDefault()
+        if ((myProduct.color?.length > 0 && colorSelected != '') || !(myProduct.color?.length > 0)) {
+           props.addToCart(cartAddProduct)
+        }
+    }
+    const sendCart = () => {
+    
+        setCartAddProduct({
+            uid: myProduct.uid,
+            color: myProduct.color?.length > 0 ? colorSelected ? colorSelected : undefined : 'default',
+            size: myProduct.size?.length > 0 ? sizeRef.current?.value : 'default',
+            qty: parseInt(qtyRef.current?.value),
+            category: myProduct.category,
+        })
+    }
+
+
     useEffect(() => {
         setMyProduct(props.res)
     }, [props.res]);
-    console.log()
     return (
         <div>
             <section className="text-gray-600 body-font overflow-hidden">
@@ -14,8 +37,7 @@ const Slug = (props) => {
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
                         <div className="lg:w-1/3 w-full flex  justify-center  " >
                             {
-                                myProduct.image && <Image src={myProduct?.image} alt={myProduct.title} objectFit='contain' width={500 } height={500} objectPosition={'top'} className="mx-auto"  layout="intrinsic" />
-
+                                myProduct.image && <Image src={myProduct?.image} alt={myProduct.title} objectFit='contain' width={500} height={500} objectPosition={'top'} className="mx-auto" layout="intrinsic" />
                             }
                         </div>
                         <div className="lg:w-2/3 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -56,48 +78,81 @@ const Slug = (props) => {
                                     </a>
                                 </span>
                             </div>
-                            <p className="leading-relaxed">{myProduct.description}</p>
-                            <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-                                <div className="flex">
-                                    <span className="mr-3">Color</span>
-                                    <div className="btn-group">
-                                        {
-                                            myProduct?.color?.map((s, i) => <span key={i}>
-                                                <input onChange={e => setColorSelected(e.target.title)} type="radio" title={s} className="btn-check invisible" name={'color'} id={s + 1} autoComplete="off" />
-                                                <label style={{ backgroundColor: s, outline: (colorSelected == s ? '1px solid gray' : '') }} autoComplete="off" role="button" className={("border-2  inline-block  w-6 h-6   opacity-70 hover:scale-110 rounded-full ")} htmlFor={s + 1}></label>
-                                            </span>
+                            <p className="leading-relaxed mb-2">{myProduct.description}</p>
 
-                                            )
-                                        }
-                                    </div>
-                                </div>
-                                {
-                                    myProduct?.size && <div className="flex ml-6 items-center">
-                                        <span className="mr-3">Size</span>
-                                        <div className="relative">
-                                            <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10 uppercase">
-                                                {
-                                                    myProduct?.size?.map((s, i) => <option className='uppercase' key={i}>{s}</option>)
-                                                }
-                                            </select>
 
-                                            <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
-                                                    <path d="M6 9l6 6 6-6"></path>
-                                                </svg>
-                                            </span>
+                            <div className="flex flex-col  rounded-xl  py-6 px-3 ring-1 ring-offset-3 ring-gray-200  ">
+                                <form onSubmit={e => setCart(e)}>
+                                    <div className="flex mt-2 items-center pb-5 justify-between border-b-2 border-gray-100 mb-5">
+
+                                        <div className="  items-center">
+                                            <span className="title-font font-medium text-2xl text-gray-900"><sup className='font-light'>$</sup>{myProduct.price}</span>
+
+                                            {/* color */}
+                                            <div className="flex my-3">
+                                                <span className="mr-3">Color</span>
+                                                <div className="btn-group">
+                                                    {
+                                                        !myProduct?.color?.length > 0 ? <p>No color</p> : myProduct?.color?.map((s, i) => <span key={i}>
+                                                            <input onChange={e => setColorSelected(e.target.title)} type="radio" title={s} className="btn-check invisible" name={'color'} id={s + 1} autoComplete="off" />
+                                                            <label style={{ backgroundColor: s, outline: (colorSelected == s ? '1px solid gray' : '') }} autoComplete="off" role="button" className={("border-2  inline-block  w-6 h-6   opacity-70 hover:scale-110 rounded-full ")} htmlFor={s + 1}></label>
+                                                        </span>
+
+                                                        )
+                                                    }
+                                                </div>
+                                            </div>
+                                            {/* size */}
+                                            {myProduct?.size && <div className="flex  items-center">
+                                                <span className="mr-6">Size</span>
+                                                {!myProduct?.size?.length > 0 ? <p>Default</p> : <div className="relative">
+                                                    <select ref={sizeRef} className="rounded border appearance-none border-gray-300  focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10 uppercase">
+                                                        {
+                                                            myProduct?.size?.map((s, i) => <option className='uppercase' key={i}>{s}</option>)
+                                                        }
+                                                    </select>
+
+                                                    <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                                                        <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
+                                                            <path d="M6 9l6 6 6-6"></path>
+                                                        </svg>
+                                                    </span>
+                                                </div>}
+                                            </div>}
+
                                         </div>
-                                    </div>}
+                                        <div className="flex flex-col">
+                                            {myProduct.stocks > 0 ? <span className='font-bold text-lg text-green-800'>In Stock.</span> : <span className='font-bold text-lg text-red-800'>Out Of Stock.</span>}
+                                            {myProduct.stocks > 0 && <div className="flex  items-center">
+                                                <div className="relative">
+                                                    <select ref={qtyRef} name="qty" className="rounded border appearance-none border-gray-300 first-letter: focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10 " id="">
+                                                        {
+                                                            myProduct.stocks > 0 && [...Array(myProduct?.stocks)].map((item, i) => <option key={i + 1} value={i + 1}>{i + 1}</option>)
+
+                                                        }
+                                                    </select>
+                                                    <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                                                        <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
+                                                            <path d="M6 9l6 6 6-6"></path>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                                <span className="ml-6">Qty</span>
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div className="flex">
+                                        <button type='submit' onClick={sendCart} className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to cart</button>
+                                        <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                                            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                                                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                            <div className="flex">
-                                <span className="title-font font-medium text-2xl text-gray-900">${myProduct.price}</span>
-                                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to cart</button>
-                                <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                                    <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                                    </svg>
-                                </button>
-                            </div>
+
                         </div>
                     </div>
                 </div>

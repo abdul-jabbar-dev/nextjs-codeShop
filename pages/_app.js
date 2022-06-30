@@ -2,10 +2,11 @@ import '../styles/globals.css'
 import Navbar from '../Components/Navbar'
 import { useState, useEffect } from 'react'
 import Footer from '../Components/Footer'
+import LocalStorage from '../utility/LocalStorage'
 function MyApp({ Component, pageProps }) {
   const [myDatabase, setMyDatabase] = useState([])
   const [cart, setCart] = useState([]);
-
+  // const [cart, setCart] = useState([]);
   useEffect(() => {
     const fechProducts = async () => {
       const fech = await fetch(`http://localhost:3000/api/products`)
@@ -17,63 +18,31 @@ function MyApp({ Component, pageProps }) {
 
 
 
-  const addToCart = (id, quantity, color, size) => {
-    let temp = cart;
-    if (temp.length !== 0) {
-      if (temp.find(x => x.id === id && x.color === color && x.size === size)) {
-        temp.filter(x => {
-          if (x.id === id) {
-            return x.qty = x.qty + (quantity ? quantity : 1)
+  const addToCart = (product) => {
+    console.log(product)
+    let tempItem = { ...product }
+    if (cart.find(item => item.uid === tempItem.uid)) {
+      if (tempItem.color === 'Default' || cart.find(item => item.color === tempItem.color)) {
+        if (tempItem.size === 'Default' || cart.find(item => item.size === tempItem.size)) {
+          let temp = cart
+          for (const key of temp) {
+            key.qty = key.qty + tempItem.qty
           }
-        })
+          setCart(temp)
+        } else {
+          setCart([tempItem, ...cart])
+        }
       } else {
-        temp.push({
-          id: id,
-          qty: quantity ? quantity : 1,
-          size: size,
-          color: color
-        })
-
+        setCart([tempItem, ...cart])
       }
     } else {
-      temp.push({
-        id: id,
-        qty: quantity ? quantity : 1,
-        size: size,
-        color: color
-
-      })
+      setCart([tempItem, ...cart])
     }
   }
-
-  const removeItem = (id) => {
-    let temp = cart;
-    if (temp.length !== 0) {
-      if (temp.find(x => x.id === id && x.color === color && x.size === size)) {
-        temp = temp.filter(x => {
-          if (x.id === id) {
-            if (x.qty > 1) {
-              return x.qty--
-            } else {
-              return
-            }
-          } else return x
-        })
-      }
-    }
-
-    setCart(temp)
-  }
-
-  const cleatCart = () => {
-    setCart([])
-  }
-
-
 
   return <>
-    <Navbar myDatabase={myDatabase}></Navbar>
-    <Component cart={cart} addToCart={addToCart} removeItem={removeItem} myDatabase={myDatabase} {...pageProps} />
+    <Navbar cart={cart} myDatabase={myDatabase}></Navbar>
+    <Component cart={cart} addToCart={addToCart} myDatabase={myDatabase} {...pageProps} />
     <Footer></Footer>
   </>
 }

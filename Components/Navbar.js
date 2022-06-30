@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React, { useRef, useState, useEffect } from 'react';
 import FlotingCarts from './NavbarComponents/FlotingCarts';
 import { useRouter } from 'next/router'
-const Navbar = ({ myDatabase }) => {
+const Navbar = ({ myDatabase,cart }) => {
     const [className, setClassName] = useState('hidden');
     const [dropDown, setDropDown] = useState(false);
     const [category, setCategory] = useState([]);
@@ -60,7 +60,7 @@ const Navbar = ({ myDatabase }) => {
                                 </svg>
                             </button>
                             <div ref={ref} className={className}>
-                                <FlotingCarts toggoleCart={toggoleCart} ></FlotingCarts>
+                                <FlotingCarts toggoleCart={toggoleCart} cart={cart} myDatabase={myDatabase} ></FlotingCarts>
                             </div>
                         </div>
 
