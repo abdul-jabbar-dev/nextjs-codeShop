@@ -175,7 +175,7 @@ const Checkout = () => {
                                                 {
                                                     products.map((product, key) => <tr key={key} className="border-b">
                                                         <td className="text-sm flex items-start space-x-4 text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                            <img className="w-16 h-16 object-contain" src={product.image} alt={product.name} />
+                                                            {/* <img className="w-16 h-16 object-contain" src={product.image} alt={product.name} /> */}
                                                             <div>
                                                                 <h4 className='font-semibold'>{product.name}</h4>
                                                                 <p className='text-xs text-gray-400 font-semibold'> Color family: {product.color}, No brand</p>
