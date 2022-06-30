@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  distDir: 'build',
+  distDir:".next",
   images: {
     domains: ["m.media-amazon.com"],
 
