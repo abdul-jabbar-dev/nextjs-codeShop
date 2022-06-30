@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
 
 
-      <Image src="/Assits/bannarColor.png" width={3500} height={1200} />
+      <Image alt='code sob' src="/Assits/bannarColor.png" width={3500} height={1200} />
       <br />
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto flex flex-wrap">
