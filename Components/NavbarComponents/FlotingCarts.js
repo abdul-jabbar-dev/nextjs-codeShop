@@ -10,7 +10,7 @@ const FlotingCarts = ({ toggoleCart, addToCart, cart, myDatabase }) => {
 
     // useEffect(() => {
     //     const getSpecificData = async (item) => {
-    //         const data = await fetch(`http://localhost:3000/api/products/${item.category}?uid=${item.uid}`)
+    //         const data = await fetch(`https://62bf1dcb2da60900b416be7b--code-shop.netlify.app//api/products/${item.category}?uid=${item.uid}`)
     //         const res = await data.json();
     //         return await res
     //     }

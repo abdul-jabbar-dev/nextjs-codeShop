@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
   // const [cart, setCart] = useState([]);
   useEffect(() => {
     const fechProducts = async () => {
-      const fech = await fetch(`http://localhost:3000/api/products`)
+      const fech = await fetch(`https://62bf1dcb2da60900b416be7b--code-shop.netlify.app//api/products`)
       const products = await fech.json()
       setMyDatabase(products)
     }

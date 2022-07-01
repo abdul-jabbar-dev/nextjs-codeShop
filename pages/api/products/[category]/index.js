@@ -1,7 +1,7 @@
 
 export default async function handler(req, res) {
     let products = []
-    const data = await fetch('http://localhost:3000/api/products/');
+    const data = await fetch('https://62bf1dcb2da60900b416be7b--code-shop.netlify.app//api/products/');
     const response = await data.json()
     for (let i = 0; i < response.length; i++) {
         const element = response[i];

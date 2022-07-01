@@ -53,7 +53,7 @@ const Checkout = () => {
     }
     useEffect(() => {
         const getPromoCode = async () => {
-            const fetchData = await fetch('http://localhost:3000/api/promocode')
+            const fetchData = await fetch('https://62bf1dcb2da60900b416be7b--code-shop.netlify.app//api/promocode')
             const data = await fetchData.json()
             setPromoCodes(data)
         }

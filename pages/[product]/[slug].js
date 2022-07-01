@@ -163,7 +163,7 @@ const Slug = (props) => {
 
 export default Slug;
 export async function getServerSideProps({ query }) {
-    const data = await fetch(`http://localhost:3000/api/products/${query.product}?uid=${query.slug}`)
+    const data = await fetch(`https://62bf1dcb2da60900b416be7b--code-shop.netlify.app//api/products/${query.product}?uid=${query.slug}`)
     const res = await data.json();
     return {
         props: { res }

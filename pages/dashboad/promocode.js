@@ -12,7 +12,7 @@ const Promocode = () => {
     const setPromoCode = () => {
         if (newPromo.code?.length > 0 && newPromo.discount?.length > 0 && newPromo.expireDate?.length > 0 && newPromo.provider?.length > 0) {
             setNewPromo(newPromo.createDate = new Date().toDateString())
-            fetch(`http://localhost:3000/api/promocode`, {
+            fetch(`https://62bf1dcb2da60900b416be7b--code-shop.netlify.app//api/promocode`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newPromo)
@@ -39,7 +39,7 @@ const Promocode = () => {
 
     useEffect(() => {
         const getPromoCode = async () => {
-            const res = await fetch(`http://localhost:3000/api/promocode`)
+            const res = await fetch(`https://62bf1dcb2da60900b416be7b--code-shop.netlify.app//api/promocode`)
             const code = await res.json();
             setPromoCodes(code)
         }
